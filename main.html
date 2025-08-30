@@ -388,6 +388,54 @@
 	<script src="js/jquery.countTo.js"></script>
 	<!-- Main -->
 	<script src="js/main.js"></script>
+
+	<!-- 팝업 영역 -->
+<div id="popup" style="
+  display:none;
+  position:fixed;
+  top:16px;
+  right:16px;            /* 오른쪽 상단 고정 */
+  z-index:9999;
+">
+  <div style="
+    position:relative;
+    background:#fff;
+    padding:8px 8px 44px; /* 아래 여백은 버튼 자리 */
+    border-radius:10px;
+    box-shadow:0 8px 24px rgba(0,0,0,0.25);
+    width:fit-content;
+    max-width: 360px;     /* 팝업 최대 너비 제한 */
+  ">
+    <!-- 이미지: 뷰포트/최대값 기준으로 축소 -->
+    <img src="images/0920sakai.jpg" alt="공지 이미지" style="
+      display:block;
+      width: min(50vw, 340px);  /* 화면의 50% 또는 340px 중 작은 값 */
+      height:auto;
+    ">
+
+    <!-- 닫기 버튼(하단 고정) -->
+    <button id="closePopup" style="
+      position:absolute;
+      left:8px; right:8px; bottom:8px;
+      padding:8px 0;
+      background:#d9534f; color:#fff;
+      border:none; border-radius:6px;
+      cursor:pointer; font-size:14px;
+    ">Close</button>
+  </div>
+</div>
+
+<script>
+  // 페이지 로드 시 팝업 표시
+  window.addEventListener('load', function () {
+    document.getElementById('popup').style.display = 'block';
+  });
+
+  // 닫기
+  document.getElementById('closePopup').addEventListener('click', function () {
+    document.getElementById('popup').style.display = 'none';
+  });
+</script>
 	
 </body>
 
