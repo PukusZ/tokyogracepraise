@@ -138,7 +138,7 @@ h1, h2, h3, h4, h5, h6, figure {
 }
 @media screen and (max-width: 768px) {
   .fh5co-nav #fh5co-logo a {
-    font-size: 24px;
+    font-size: 21px;
     text-align: center;
     width: 100%;
   }
@@ -938,7 +938,7 @@ input[type="text"] {
 #fh5co-offcanvas {
   position: absolute;
   z-index: 1901;
-  width: 150px;
+  width: 180px;
   background: black;
   top: 0;
   right: 0;
@@ -1433,6 +1433,60 @@ input[type="text"] {
   margin-bottom: 20px;
   color: #333;
   text-align: center;
+}
+
+/* === 모바일에서 갤러리를 가로 슬라이드로 === */
+@media screen and (max-width: 768px) {
+  /* grid → 가로 스크롤 가능한 flex로 전환 */
+  .photo-gallery .gallery-grid {
+    display: flex !important;
+    overflow-x: auto !important;
+    gap: 12px !important;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding: 0 12px 8px;
+  }
+
+  /* 카드 폭(한 화면에 1장 조금 넘게 보이게) */
+  .photo-gallery .gallery-grid a {
+    flex: 0 0 78vw;
+    display: block;
+    scroll-snap-align: start;
+  }
+
+  /* 이미지 크기/자르기 */
+  .photo-gallery .gallery-grid img {
+    width: 100% !important;
+    height: 100vw !important;
+    object-fit: contain;
+    border-radius: 8px;
+  }
+
+  /* 갤러리 안에 <br>가 있으면 줄바꿈이 생기므로 숨김 */
+  .photo-gallery br {
+    display: none !important;
+  }
+
+  /* 확대 팝업 링크(이미지 전체 클릭 영역) */
+  .photo-gallery .gallery-grid a.image-popup {
+    display: block;
+  }
+
+  /* 모바일에서 섹션 좌우 여백 조금 확보 (선택) */
+  #fh5co-counter.photo-gallery,
+  .photo-gallery {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+}
+@media screen and (max-width: 1024px) and (orientation: landscape) {
+  .photo-gallery .gallery-grid a {
+    flex: 0 0 60vw !important; /* 가로 폭 줄이기 (70~60vw 정도가 보기 좋음) */
+  }
+
+  .photo-gallery .gallery-grid img {
+    height: 35vw !important;  /* 세로 높이도 줄이기 */
+  }
 }
 
 /*# sourceMappingURL=style.css.map */
